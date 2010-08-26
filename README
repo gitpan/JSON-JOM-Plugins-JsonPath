@@ -1,0 +1,49 @@
+NAME
+    JSON::JOM::Plugins::JsonPath - search for nodes using JSONPath.
+
+SYNOPSIS
+     use JSON::JOM;
+ 
+     my $jom = to_jom({
+       test => {
+         foo  => [{quux=>1},{quux=>2},{quux=>3}],
+         bar  => [{quux=>4},{quux=>5},{quux=>6}],
+       },
+     });
+ 
+     my @nodes = $jom->{test}->findNodes("\$[*][*]");
+     foreach my $node (@nodes)
+     {
+       if ($node->matchesPath("\$[*]['bar'][*]"))
+       {
+         print "bar has object with quux=".$node->{quux}."\n";
+       }
+     }
+
+DESCRIPTION
+    This JOM plugin adds the following method to JOM objects and arrays:
+
+    *   "findNodes" - search for descendant nodes using a JSONPath path.
+
+    *   "matchesPath" - check to see if a node matches a search path.
+
+    Note that the core JOM functionality includes a "nodePath" method to get
+    a canonical JSONPath path for each node.
+
+BUGS
+    Please report any bugs to <http://rt.cpan.org/>.
+
+SEE ALSO
+    JSON::JOM, JSON::JOM::Plugins.
+
+    JSON::Path.
+
+AUTHOR
+    Toby Inkster <tobyink@cpan.org>.
+
+COPYRIGHT
+    Copyright 2010 Toby Inkster
+
+    This library is free software; you can redistribute it and/or modify it
+    under the same terms as Perl itself.
+
