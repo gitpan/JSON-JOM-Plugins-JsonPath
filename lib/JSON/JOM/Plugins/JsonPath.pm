@@ -1,13 +1,19 @@
 package JSON::JOM::Plugins::JsonPath;
 
-use 5.008;
-use common::sense;
+use 5.010;
+use strict;
+use utf8;
 
 use Carp qw[];
 use JSON::JOM qw[];
 use JSON::Path qw[];
+use Object::AUTHORITY;
 
-our $VERSION = '0.001';
+BEGIN
+{
+	$JSON::JOM::Plugins::JsonPath::AUTHORITY = 'cpan:TOBYINK';
+	$JSON::JOM::Plugins::JsonPath::VERSION   = '0.002';
+}
 
 sub extensions
 {
@@ -98,12 +104,18 @@ L<JSON::Path>.
 
 Toby Inkster E<lt>tobyink@cpan.orgE<gt>.
 
-=head1 COPYRIGHT
+=head1 COPYRIGHT AND LICENCE
 
-Copyright 2010 Toby Inkster
+Copyright 2010-2011 Toby Inkster
 
 This library is free software; you can redistribute it and/or modify it
 under the same terms as Perl itself.
+
+=head1 DISCLAIMER OF WARRANTIES
+
+THIS PACKAGE IS PROVIDED "AS IS" AND WITHOUT ANY EXPRESS OR IMPLIED
+WARRANTIES, INCLUDING, WITHOUT LIMITATION, THE IMPLIED WARRANTIES OF
+MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE.
 
 =cut
 
